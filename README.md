@@ -14,9 +14,10 @@ npm i -D webpack-filter-warnings-plugin
 
 ## Usage
 ```js
-import FilterWarningsPlugin from 'webpack-filter-warnings-plugin';
+// webpack.config.js
+const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
 
-export default {
+module.exports = {
   // ... rest of webpack config
   plugins: [
     new FilterWarningsPlugin({ 
