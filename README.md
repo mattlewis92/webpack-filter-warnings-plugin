@@ -26,8 +26,8 @@ export default {
 }
 ```
 
-### Why not use the built in stats.warnings filter?
-Currently karma-webpack does not respect the stats.warning filter. Also when excluding all warnings, webpack still says there are some warnings. Hopefully this plugin will no longer need to exist one day.
+### Why not use the built in stats.warningsFilter option?
+Currently karma-webpack does not respect the stats.warningsFilter option. Also when excluding all warnings, webpack still says `Compiled with warnings.` when all warnings are filtere. Hopefully this plugin will no longer need to exist one day.
 
 ## Licence
 MIT
