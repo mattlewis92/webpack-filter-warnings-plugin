@@ -1,6 +1,6 @@
 {
   "name": "webpack-filter-warnings-plugin",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Allows you to hide certain warnings from webpack compilations",
   "main": "dist/cjs.js",
   "scripts": {
