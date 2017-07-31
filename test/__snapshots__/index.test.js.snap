@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`allow array of regexp to filter by 1`] = `
+Array [
+  [ModuleWarning: show me],
+]
+`;
+
+exports[`filter warnings by regexp 1`] = `
+Array [
+  [ModuleWarning: show me],
+]
+`;
+
+exports[`throw when invalid arguments 1`] = `[Error: Exclude an only be a regexp or an array of regexp]`;

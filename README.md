@@ -1,2 +1,48 @@
 # webpack-filter-warnings-plugin
-Allows you to hide certain warnings from webpack compilations
+[![npm][npm]][npm-url]
+[![node][node]][node-url]
+[![deps][deps]][deps-url]
+[![tests][tests]][tests-url]
+[![coverage][cover]][cover-url]
+
+> Allows you to hide certain warnings from webpack compilations
+
+## Install
+```bash
+npm i -D webpack-filter-warnings-plugin
+```
+
+## Usage
+```js
+import FilterWarningsPlugin from 'webpack-filter-warnings-plugin';
+
+export default {
+  // ... rest of webpack config
+  plugins: [
+    new FilterWarningsPlugin({ 
+      exclude: /any-warnings-matching-this-will-be-hidden/ 
+    })
+  ]
+}
+```
+
+### Why not use the built in stats.warnings filter?
+Currently karma-webpack does not respect the stats.warning filter. Also when excluding all warnings, webpack still says there are some warnings. Hopefully this plugin will no longer need to exist one day.
+
+## Licence
+MIT
+
+[npm]: https://img.shields.io/npm/v/webpack-filter-warnings-plugin.svg
+[npm-url]: https://npmjs.com/package/webpack-filter-warnings-plugin
+
+[node]: https://img.shields.io/node/v/webpack-filter-warnings-plugin.svg
+[node-url]: https://nodejs.org
+
+[deps]: https://david-dm.org/mattlewis92/webpack-filter-warnings-plugin.svg
+[deps-url]: https://david-dm.org/mattlewis92/webpack-filter-warnings-plugin
+
+[tests]: http://img.shields.io/travis/mattlewis92/webpack-filter-warnings-plugin.svg
+[tests-url]: https://travis-ci.org/mattlewis92/webpack-filter-warnings-plugin
+
+[cover]: https://codecov.io/gh/mattlewis92/webpack-filter-warnings-plugin/branch/master/graph/badge.svg
+[cover-url]: https://codecov.io/gh/mattlewis92/webpack-filter-warnings-plugin
