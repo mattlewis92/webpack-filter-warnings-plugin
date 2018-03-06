@@ -40,7 +40,7 @@
     "node": ">= 4.3 < 5.0.0 || >= 5.10"
   },
   "peerDependencies": {
-    "webpack": "^2.0.0 || ^3.0.0"
+    "webpack": "^2.0.0 || ^3.0.0 || ^4.0.0"
   },
   "pre-commit": "lint-staged",
   "lint-staged": {
@@ -66,6 +66,6 @@
     "nsp": "^3.2.1",
     "pre-commit": "^1.2.2",
     "standard-version": "^4.2.0",
-    "webpack": "^3.4.1"
+    "webpack": "^4.1.0"
   }
 }
