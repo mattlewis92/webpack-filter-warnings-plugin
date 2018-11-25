@@ -50,22 +50,22 @@
     ]
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-jest": "^22.4.1",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-polyfill": "^6.23.0",
-    "babel-preset-env": "^1.6.0",
-    "cross-env": "^5.0.1",
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^23.6.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "cross-env": "^5.2.0",
     "del-cli": "^1.1.0",
-    "eslint": "^4.3.0",
+    "eslint": "^5.9.0",
     "eslint-config-webpack": "^1.2.5",
-    "eslint-plugin-import": "^2.7.0",
-    "jest": "^22.4.2",
-    "lint-staged": "^7.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "jest": "^23.6.0",
+    "lint-staged": "^8.1.0",
     "memory-fs": "^0.4.1",
     "nsp": "^3.2.1",
     "pre-commit": "^1.2.2",
-    "standard-version": "^4.2.0",
-    "webpack": "^4.1.0"
+    "standard-version": "^4.4.0",
+    "webpack": "^4.26.0"
   }
 }
