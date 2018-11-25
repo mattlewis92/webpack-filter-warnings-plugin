@@ -1,6 +1,6 @@
 function filterWarnings(exclude, result) {
   result.compilation.warnings = result.compilation.warnings.filter( // eslint-disable-line no-param-reassign
-    warning => !exclude.some(regexp => regexp.test(warning.message)),
+    warning => !exclude.some(regexp => regexp.test(warning.message || warning)),
   );
 }
 
