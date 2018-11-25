@@ -36,3 +36,21 @@ test('throw when invalid arguments', async () => {
     expect(e).toMatchSnapshot();
   }
 });
+
+test('allow filter warnings that are strings', async () => {
+  const stats = await webpack({
+    extend: {
+      plugins: [
+        {
+          apply(compiler) {
+            compiler.hooks.done.tap('filter-warnings-plugin', (result) => {
+              result.compilation.warnings.push('hide this string');
+            });
+          },
+        },
+        new FilterWarningsPlugin({ exclude: /hide/ }),
+      ],
+    },
+  });
+  expect(stats.compilation.warnings).toMatchSnapshot();
+});

@@ -7,6 +7,13 @@ show me],
 ]
 `;
 
+exports[`allow filter warnings that are strings 1`] = `
+Array [
+  [ModuleWarning: Module Warning (from ./test/utils/loader.js):
+show me],
+]
+`;
+
 exports[`filter warnings by regexp 1`] = `
 Array [
   [ModuleWarning: Module Warning (from ./test/utils/loader.js):
