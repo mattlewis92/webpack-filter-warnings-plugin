@@ -2,13 +2,15 @@
 
 exports[`allow array of regexp to filter by 1`] = `
 Array [
-  [ModuleWarning: show me],
+  [ModuleWarning: Module Warning (from ./test/utils/loader.js):
+show me],
 ]
 `;
 
 exports[`filter warnings by regexp 1`] = `
 Array [
-  [ModuleWarning: show me],
+  [ModuleWarning: Module Warning (from ./test/utils/loader.js):
+show me],
 ]
 `;
 
