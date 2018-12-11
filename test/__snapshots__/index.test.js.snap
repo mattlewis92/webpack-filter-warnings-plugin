@@ -14,11 +14,16 @@ show me],
 ]
 `;
 
-exports[`filter warnings by regexp 1`] = `
+exports[`filter warnings by function 1`] = `
 Array [
   [ModuleWarning: Module Warning (from ./test/utils/loader.js):
 show me],
 ]
 `;
 
-exports[`throw when invalid arguments 1`] = `[Error: Exclude an only be a regexp or an array of regexp]`;
+exports[`filter warnings by regexp 1`] = `
+Array [
+  [ModuleWarning: Module Warning (from ./test/utils/loader.js):
+show me],
+]
+`;

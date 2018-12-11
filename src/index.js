@@ -1,18 +1,23 @@
-function filterWarnings(exclude, result) {
-  result.compilation.warnings = result.compilation.warnings.filter( // eslint-disable-line no-param-reassign
-    warning => !exclude.some(regexp => regexp.test(warning.message || warning)),
-  );
+function getType(value) {
+  return Object.prototype.toString.call(value).slice(8, -1).toLowerCase();
+}
+
+function filterWarnings(exclude, { compilation }) {
+  compilation.warnings = compilation.warnings.filter(warning => !exclude.some((rule) => { // eslint-disable-line no-param-reassign
+    switch (getType(rule)) {
+      case 'regexp':
+        return rule.test(warning.message || warning);
+      case 'function':
+        return rule.call(null, warning);
+      default:
+        return false;
+    }
+  }));
 }
 
 export default class FilterWarningsPlugin {
-  constructor({ exclude }) {
-    if (exclude instanceof RegExp) {
-      exclude = [exclude]; // eslint-disable-line no-param-reassign
-    }
-    if (!Array.isArray(exclude)) {
-      throw new Error('Exclude an only be a regexp or an array of regexp');
-    }
-    this.exclude = exclude;
+  constructor(options) {
+    this.exclude = [].concat(options && options.exclude);
   }
 
   apply(compiler) {

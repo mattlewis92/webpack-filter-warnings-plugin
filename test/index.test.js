@@ -12,6 +12,19 @@ test('filter warnings by regexp', async () => {
   expect(stats.compilation.warnings).toMatchSnapshot();
 });
 
+test('filter warnings by function', async () => {
+  const stats = await webpack({
+    extend: {
+      plugins: [
+        new FilterWarningsPlugin({
+          exclude: ({ message }) => message.indexOf('hide me') > -1,
+        }),
+      ],
+    },
+  });
+  expect(stats.compilation.warnings).toMatchSnapshot();
+});
+
 test('allow array of regexp to filter by', async () => {
   const stats = await webpack({
     extend: {
@@ -21,20 +34,6 @@ test('allow array of regexp to filter by', async () => {
     },
   });
   expect(stats.compilation.warnings).toMatchSnapshot();
-});
-
-test('throw when invalid arguments', async () => {
-  try {
-    await webpack({
-      extend: {
-        plugins: [
-          new FilterWarningsPlugin({}),
-        ],
-      },
-    });
-  } catch (e) {
-    expect(e).toMatchSnapshot();
-  }
 });
 
 test('allow filter warnings that are strings', async () => {
