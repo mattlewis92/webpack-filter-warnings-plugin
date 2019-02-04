@@ -1,6 +1,6 @@
 import { Plugin } from 'webpack';
 
-export default WebpackFilterWarningsPlugin;
+export = WebpackFilterWarningsPlugin;
 
 declare class WebpackFilterWarningsPlugin extends Plugin {
   constructor(options: WebpackFilterWarningsPlugin.Options);
