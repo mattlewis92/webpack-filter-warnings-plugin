@@ -3,10 +3,11 @@
   "version": "1.2.1",
   "description": "Allows you to hide certain warnings from webpack compilations",
   "main": "dist/cjs.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
     "start": "npm run build -- -w",
-    "build": "cross-env NODE_ENV=production babel src -d dist --ignore 'src/**/*.test.js'",
+    "build": "cross-env NODE_ENV=production babel src -d dist --copy-files --ignore 'src/**/*.test.js'",
     "clean": "del-cli dist",
     "lint": "eslint --cache src test",
     "lint-staged": "lint-staged",
@@ -67,5 +68,8 @@
     "pre-commit": "^1.2.2",
     "standard-version": "^4.4.0",
     "webpack": "^4.26.0"
+  },
+  "dependencies": {
+    "@types/webpack": "^4.4.24"
   }
 }
