@@ -9,7 +9,8 @@
     "start": "npm run build -- -w",
     "build": "cross-env NODE_ENV=production",
     "clean": "del-cli dist",
-    "lint": "tslint src test",
+    "lint": "tslint 'src/**/*.ts' 'test/**/*.ts'",
+    "lint:fix": "npm run lint --fix",
     "lint-staged": "lint-staged",
     "prebuild": "npm run clean",
     "prepublish": "npm run build",
@@ -19,7 +20,9 @@
     "test:coverage": "npm test --coverage",
     "travis:lint": "npm run lint && npm run security",
     "travis:test": "npm test --runInBand",
-    "travis:coverage": "npm run test:coverage -- --runInBand"
+    "travis:coverage": "npm run test:coverage -- --runInBand",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch"
   },
   "repository": {
     "type": "git",
@@ -45,12 +48,16 @@
   },
   "pre-commit": "lint-staged",
   "lint-staged": {
-    "*.js": [
-      "tslint --fix",
+    "*.ts": [
+      "npm run lint:fix",
       "git add"
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-typescript": "^7.1.0",
     "cross-env": "^5.2.0",
     "del-cli": "^1.1.0",
     "jest": "^23.6.0",
