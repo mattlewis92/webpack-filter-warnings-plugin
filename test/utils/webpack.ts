@@ -1,8 +1,8 @@
-import path from 'path';
-import webpack from 'webpack';
 import MemoryFileSystem from 'memory-fs';
+import path from 'path';
+import webpack, { Configuration } from 'webpack';
 
-const loader = require.resolve('./loader');
+import loader from './loader';
 
 export default function ({ fixture = 'basic.js', extend = {} } = {}) {
   const config = {
@@ -18,15 +18,17 @@ export default function ({ fixture = 'basic.js', extend = {} } = {}) {
       }],
     },
     ...extend,
-  };
+  } as Configuration;
 
   return new Promise((resolve, reject) => {
     const compiler = webpack(config);
+
     compiler.outputFileSystem = new MemoryFileSystem();
     compiler.run((err, stats) => {
       if (err) {
         return reject(err);
       }
+
       return resolve(stats);
     });
   });
