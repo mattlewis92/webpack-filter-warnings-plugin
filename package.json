@@ -10,7 +10,7 @@
     "build": "npm run build:types && npm run build:js",
     "build:dev": "npm run build -- -- --source-maps inline",
     "build:types": "tsc --emitDeclarationOnly",
-    "build:js": "babel src test --out-dir dist --extensions '.ts'",
+    "build:js": "babel src --out-dir dist --extensions '.ts'",
     "clean": "del-cli dist",
     "lint": "tslint 'src/**/*.ts' 'test/**/*.ts'",
     "lint:fix": "npm run lint -- --fix",
