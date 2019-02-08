@@ -1,10 +1,10 @@
 import MemoryFileSystem from 'memory-fs';
 import path from 'path';
-import webpack, { Configuration } from 'webpack';
+import webpack, { Configuration, Stats } from 'webpack';
 
-import loader from './loader';
+const loader = require.resolve('./loader');
 
-export default function ({ fixture = 'basic.js', extend = {} } = {}) {
+export default function ({ fixture = 'basic.js', extend = {} } = {}): Promise<Stats> {
   const config = {
     mode: 'development',
     entry: path.join(__dirname, '..', 'fixtures', fixture),

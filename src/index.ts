@@ -2,7 +2,7 @@ import { Compiler, Plugin, Stats } from 'webpack';
 
 import { ExcludeOption, WebpackFilterWarningsPluginOptions } from './interfaces';
 
-export default class FilterWarningsPlugin extends Plugin {
+export default class FilterWarningsPlugin implements Plugin {
   private static convertToRegExp(exclude: ExcludeOption[]): RegExp[] {
     return exclude.map((excludeEntry: ExcludeOption) => {
       if (!(excludeEntry instanceof RegExp)) {
@@ -43,8 +43,6 @@ export default class FilterWarningsPlugin extends Plugin {
   private exclude: RegExp[];
 
   constructor({ exclude }: WebpackFilterWarningsPluginOptions) {
-    super();
-
     if (!FilterWarningsPlugin.isSupportedOption(exclude)) {
       throw new Error('Exclude can only be string, RegExp or Array of these');
     }
@@ -68,3 +66,4 @@ export default class FilterWarningsPlugin extends Plugin {
     }
   }
 }
+

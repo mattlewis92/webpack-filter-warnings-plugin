@@ -1,4 +1,4 @@
-const CJS = require('cjs'); // tslint:disable-line
+const CJS = require('../src/cjs'); // tslint:disable-line
 
 jest.mock('../src/index', () => ({}));
 
