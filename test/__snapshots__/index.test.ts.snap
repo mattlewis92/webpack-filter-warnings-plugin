@@ -21,4 +21,4 @@ show me],
 ]
 `;
 
-exports[`Main library file Type guards should throw when invalid arguments 1`] = `[Error: Exclude can only be string, RegExp or Array of these]`;
+exports[`Main library file Type guards should throw when invalid arguments are passed 1`] = `[Error: Exclude can only be string, RegExp or Array of these]`;

@@ -22,8 +22,8 @@
     "test:watch": "npm test -- --watch",
     "test:coverage": "npm test -- --coverage",
     "travis:lint": "npm run lint && npm run security",
-    "travis:test": "npm test -- --runInBand",
-    "travis:coverage": "npm run test:coverage -- --runInBand",
+    "travis:test": "npm test",
+    "travis:coverage": "npm run test:coverage",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch"
   },

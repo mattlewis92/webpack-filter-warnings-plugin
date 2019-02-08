@@ -7,7 +7,7 @@ describe('Main library file', () => {
   });
 
   describe('Type guards', () => {
-    it('should throw when invalid arguments', async () => {
+    it('should throw when invalid arguments are passed', async () => {
       try {
         await webpack({
           extend: {
