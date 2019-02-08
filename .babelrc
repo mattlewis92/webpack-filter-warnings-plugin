@@ -3,7 +3,7 @@
     [
       "@babel/env",
       {
-        "useBuiltIns": "usage",
+        "useBuiltIns": "entry",
         "targets": {
           "node": "4.3"
         }
