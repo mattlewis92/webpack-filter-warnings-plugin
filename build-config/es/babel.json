@@ -1,0 +1,14 @@
+{
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "useBuiltIns": "entry",
+        "targets": {
+          "node": "4.3"
+        }
+      }
+    ],
+    "@babel/typescript"
+  ]
+}
