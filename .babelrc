@@ -1,14 +1,40 @@
 {
   "presets": [
     [
-      "@babel/env",
+      "@babel/preset-env",
       {
-        "useBuiltIns": "entry",
         "targets": {
-          "node": "4.3"
+          "esmodules": true
         }
       }
-    ],
-    "@babel/typescript"
+    ]
+  ],
+  "overrides": [
+    {
+      "test": "ts-out/es",
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "esmodules": true
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "test": "ts-out/cjs",
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "node": "4.3"
+            }
+          }
+        ]
+      ]
+    }
   ]
 }
