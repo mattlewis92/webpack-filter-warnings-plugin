@@ -68,6 +68,25 @@ describe('Main library file', () => {
     });
   });
 
+  fdescribe('Function exclude', () => {
+    it('should filter warnings based on given function', async () => {
+      const exclude = (input: string) => {
+        return /.*hide.*/.test(input);
+      };
+
+      const stats = await webpack({
+        extend: {
+          plugins: [
+            new FilterWarningsPlugin({ exclude }),
+          ],
+        },
+      });
+
+      expect(stats.compilation.warnings).toHaveLength(1);
+      expect(stats.compilation.warnings).toMatchSnapshot();
+    });
+  });
+
   it('should support older Webpack (via "plugin" interface', () => {
     const pluginInstance = new FilterWarningsPlugin({ exclude: 'hide' });
 
