@@ -2,7 +2,8 @@
   "name": "webpack-filter-warnings-plugin",
   "version": "1.2.1",
   "description": "Allows you to hide certain warnings from webpack compilations",
-  "main": "dist/cjs.js",
+  "main": "dist/index.js",
+  "module": "dist/cjs.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest --config jest.config.js",
