@@ -68,7 +68,7 @@ describe('Main library file', () => {
     });
   });
 
-  fdescribe('Function exclude', () => {
+  describe('Function exclude', () => {
     it('should filter warnings based on given function', async () => {
       const exclude = (input: string) => {
         return /.*hide.*/.test(input);
