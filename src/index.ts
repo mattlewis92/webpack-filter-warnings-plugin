@@ -15,7 +15,7 @@ export default class FilterWarningsPlugin implements Plugin {
   }
 
   private static filterWarnings(exclude: RegExp[], result: Stats) {
-    result.compilation.warnings = result.compilation.warnings.filter(
+    return result.compilation.warnings = result.compilation.warnings.filter(
       warning => !exclude.some((regexp: RegExp) => regexp.test(warning.message || warning)),
     );
   }
@@ -57,11 +57,11 @@ export default class FilterWarningsPlugin implements Plugin {
   public apply(compiler: Compiler) {
     if (typeof compiler.hooks !== 'undefined') {
       compiler.hooks.done.tap('filter-warnings-plugin', (result: Stats) => {
-        FilterWarningsPlugin.filterWarnings(this.exclude, result);
+        return FilterWarningsPlugin.filterWarnings(this.exclude, result);
       });
     } else {
       compiler.plugin('done', (result) => {
-        FilterWarningsPlugin.filterWarnings(this.exclude, result);
+        return FilterWarningsPlugin.filterWarnings(this.exclude, result);
       });
     }
   }
