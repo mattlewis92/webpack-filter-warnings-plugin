@@ -1,5 +1,6 @@
 module.exports = {
   collectCoverageFrom: [
+    'build-tools/**/*.ts',
     'src/**/*.ts'
   ],
   coverageDirectory: 'coverage',
@@ -21,6 +22,7 @@ module.exports = {
   ],
   preset: 'ts-jest',
   roots: [
+    '<rootDir>/build-tools',
     '<rootDir>/src',
     '<rootDir>/test'
   ],
