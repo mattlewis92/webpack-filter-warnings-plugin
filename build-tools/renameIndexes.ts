@@ -1,10 +1,10 @@
 import * as fs from 'fs';
-import * as glob from 'glob';
+import glob from 'glob';
 import * as path from 'path';
 
 interface PathToReplace {
-  originalPath: string;
   newPath: string;
+  originalPath: string;
 }
 
 /**
@@ -12,12 +12,12 @@ interface PathToReplace {
  * As neither Typescript or Babel have capability of easily renaming files along transpiling,
  * this one creates consistent file names that are easier to use for library consumers
  */
-glob('ts-out/**/index.**', (err, files) => {
-  const renameMap = files.reduce((memo: PathToReplace[], file) => {
-    const newFilename = file.replace(/(.*\/index)\.(cjs|es)(\.d)*\.(ts|js)/, '$1$3.$4');
+glob('ts-out/**/index.**', (err: Error | null, files: string[]) => {
+  const renameMap: PathToReplace[] = files.reduce((memo: PathToReplace[], file: string) => {
+    const newFilename: string = file.replace(/(.*\/index)\.(cjs|es)(\.d)*\.(ts|js)/, '$1$3.$4');
 
-    const originalPath = path.resolve(__dirname, '..', file);
-    const newPath = path.resolve(__dirname, '..', newFilename);
+    const originalPath: string = path.resolve(__dirname, '..', file);
+    const newPath: string = path.resolve(__dirname, '..', newFilename);
 
     if (originalPath !== newPath) {
       memo.push({
@@ -29,7 +29,7 @@ glob('ts-out/**/index.**', (err, files) => {
     return memo;
   }, [] as PathToReplace[]);
 
-  if (renameMap.length) {
+  if (renameMap.length > 0) {
     console.log(`Found ${renameMap.length} index files to rename.`); // tslint:disable-line
 
     renameMap.forEach((renameEntry: PathToReplace) => {
