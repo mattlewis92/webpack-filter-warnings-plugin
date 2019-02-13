@@ -7,7 +7,7 @@ export class FilterWarningsPlugin implements Plugin {
     return exclude.map((excludeEntry: ExcludeOption) => {
       if (typeof excludeEntry === 'string') {
         // Fallback - we allow to pass strings as input and convert them to wildcard RegExps
-        excludeEntry = new RegExp(`.*${excludeEntry}.*`, 'i');
+        excludeEntry = new RegExp(excludeEntry, 'i');
       }
 
       return excludeEntry;

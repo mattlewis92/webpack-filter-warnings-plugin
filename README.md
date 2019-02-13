@@ -13,6 +13,11 @@ npm i -D webpack-filter-warnings-plugin
 ```
 
 ## Usage
+
+Library supports both CommonJS and ES modules.
+
+### Using CommonJS
+
 ```js
 // webpack.config.js
 const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
@@ -27,8 +32,69 @@ module.exports = {
 }
 ```
 
-### Why not use the built in stats.warningsFilter option?
-Currently karma-webpack does not respect the stats.warningsFilter option. Also when excluding all warnings, webpack still says `Compiled with warnings.` when all warnings are filtere. Hopefully this plugin will no longer need to exist one day.
+### Using ES modules
+
+Library exposes special ES modules - compatible export. Use it if you are working in environment supporting those.
+Notice additional '/es' suffix in import string.
+
+```js
+// webpack.config.js
+import { FilterWarningsPlugin } from 'webpack-filter-warnings-plugin/es';
+```
+
+### Using with Typescript
+
+Webpack Filter Warnings Plugin is completely written in Typescript. As such, it exposes Typescript bindings (no `@types/` dependency needed for now).
+
+As exported module is CommonJS by default, one needs to use special Typescript syntax to import that module:
+
+```typescript
+// webpack.config.ts
+import FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
+
+```
+
+The recommended way would be to use ES module residing in `webpack-filter-warnings-plugin/es`, though, as in former examples.
+
+## Options
+
+Library exposes only one option: `exclude`. It may be one of `RegExp`, `String` or `Function`.
+
+### String as `exclude` filter
+
+When passing string as exclude parameter, phrase is converted to wildcard and matches any phrase that contains it.
+
+```js
+// webpack.config.js
+module.exports = {
+  // ... rest of webpack config
+  plugins: [
+    new FilterWarningsPlugin({ 
+      exclude: 'hide me'
+    })
+  ]
+}
+
+```
+
+This config will match any of `Should hide me`, `Hide me, please`, `HiDe Me` (filter is case insensitive) etc.
+
+### Function as `exclude` filter
+
+```js
+// webpack.config.js
+module.exports = {
+  // ... rest of webpack config
+  plugins: [
+    new FilterWarningsPlugin({ 
+      exclude: (input) => /.*hide.*/.test(input),
+    })
+  ]
+}
+```
+
+## Why not use the built in stats.warningsFilter option?
+Currently karma-webpack does not respect the stats.warningsFilter option. Also when excluding all warnings, webpack still says `Compiled with warnings.` when all warnings are filtered. Hopefully this plugin will no longer need to exist one day.
 
 ## Licence
 MIT
