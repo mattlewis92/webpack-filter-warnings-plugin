@@ -11,7 +11,7 @@
     "build:cjs": "tsc -p './build-tools/tsconfig-cjs.json'",
     "build:dev": "npm run build -- -- --source-maps inline",
     "build:es": "tsc -p './build-tools/tsconfig-es.json'",
-    "build:typescript": "npm run build:cjs && npm run build:es && npm run rename-indexes",
+    "build:typescript": "npm run build:cjs && npm run build:es && npm run renameIndexes",
     "clean": "del-cli es cjs ts-out",
     "lint": "tslint 'build-tools/**/*.ts' 'src/**/*.ts' 'test/**/*.ts' --project tsconfig.json",
     "lint-staged": "lint-staged",

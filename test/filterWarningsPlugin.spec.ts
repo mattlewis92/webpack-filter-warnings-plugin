@@ -1,6 +1,7 @@
-import { Compiler } from 'webpack';
-import FilterWarningsPlugin from '../src/index';
-import webpack from './utils/webpack';
+import { Compiler, Stats } from 'webpack';
+
+import { FilterWarningsPlugin } from '../src/filterWarningsPlugin';
+import { webpackRunner } from './utils/webpack';
 
 describe('Main library file', () => {
   it('should be a defined export', () => {
@@ -10,7 +11,7 @@ describe('Main library file', () => {
   describe('Type guards', () => {
     it('should throw when invalid arguments are passed', async () => {
       try {
-        await webpack({
+        await webpackRunner({
           extend: {
             plugins: [
               new (FilterWarningsPlugin as any)({ exclude: 123 }), // We have to cast to break the type guard :)
@@ -20,6 +21,7 @@ describe('Main library file', () => {
 
         throw new Error('Should not be thrown');
       } catch (e) {
+        expect(e.message).not.toEqual('Should not be thrown');
         expect(e).toMatchSnapshot();
       }
     });
@@ -27,7 +29,7 @@ describe('Main library file', () => {
 
   describe('RegExp exclude', () => {
     it('should filter warnings by regexp', async () => {
-      const stats = await webpack({
+      const stats: Stats = await webpackRunner({
         extend: {
           plugins: [
             new FilterWarningsPlugin({ exclude: /hide/ }),
@@ -40,7 +42,7 @@ describe('Main library file', () => {
     });
 
     it('should filter warnings by array of RegExps', async () => {
-      const stats = await webpack({
+      const stats: Stats = await webpackRunner({
         extend: {
           plugins: [
             new FilterWarningsPlugin({ exclude: [/hide/] }),
@@ -55,7 +57,7 @@ describe('Main library file', () => {
 
   describe('String exclude', () => {
     it('should filter warnings based on string option', async () => {
-      const stats = await webpack({
+      const stats: Stats = await webpackRunner({
         extend: {
           plugins: [
             new FilterWarningsPlugin({ exclude: 'hide' }),
@@ -70,11 +72,10 @@ describe('Main library file', () => {
 
   describe('Function exclude', () => {
     it('should filter warnings based on given function', async () => {
-      const exclude = (input: string) => {
-        return /.*hide.*/.test(input);
-      };
+      const exclude: (input: string) => boolean = (input: string) =>
+        /.*hide.*/.test(input);
 
-      const stats = await webpack({
+      const stats: Stats = await webpackRunner({
         extend: {
           plugins: [
             new FilterWarningsPlugin({ exclude }),
@@ -88,9 +89,9 @@ describe('Main library file', () => {
   });
 
   it('should support older Webpack (via "plugin" interface', () => {
-    const pluginInstance = new FilterWarningsPlugin({ exclude: 'hide' });
+    const pluginInstance: FilterWarningsPlugin = new FilterWarningsPlugin({ exclude: 'hide' });
 
-    const oldCompilerMock = {
+    const oldCompilerMock: Compiler = {
       plugin: jest.fn(() => ({})),
     } as any as Compiler;
 
@@ -98,8 +99,8 @@ describe('Main library file', () => {
 
     expect(oldCompilerMock.plugin).toHaveBeenCalledWith('done', expect.any(Function));
 
-    const callback = (oldCompilerMock.plugin as jest.Mock).mock.calls[0][1];
-    const result = callback({
+    const callback: any = (oldCompilerMock.plugin as jest.Mock).mock.calls[0][1];
+    const result: [{ message: string }] = callback({
       compilation: {
         warnings: [{
           message: 'Test',

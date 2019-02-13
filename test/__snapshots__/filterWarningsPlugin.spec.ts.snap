@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main library file Function exclude should filter warnings based on given function 1`] = `
+Array [
+  [ModuleWarning: Module Warning (from ./test/utils/loader.ts):
+show me],
+]
+`;
+
+exports[`Main library file RegExp exclude should filter warnings by array of RegExps 1`] = `
+Array [
+  [ModuleWarning: Module Warning (from ./test/utils/loader.ts):
+show me],
+]
+`;
+
+exports[`Main library file RegExp exclude should filter warnings by regexp 1`] = `
+Array [
+  [ModuleWarning: Module Warning (from ./test/utils/loader.ts):
+show me],
+]
+`;
+
+exports[`Main library file String exclude should filter warnings based on string option 1`] = `
+Array [
+  [ModuleWarning: Module Warning (from ./test/utils/loader.ts):
+show me],
+]
+`;
+
+exports[`Main library file Type guards should throw when invalid arguments are passed 1`] = `[Error: Exclude can only be string, RegExp or Array of these]`;

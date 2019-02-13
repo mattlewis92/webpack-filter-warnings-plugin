@@ -1,11 +1,11 @@
 import MemoryFileSystem from 'memory-fs';
-import path from 'path';
-import webpack, { Configuration, Stats } from 'webpack';
+import * as path from 'path';
+import webpack, { Compiler, Configuration, Stats } from 'webpack';
 
-const loader = require.resolve('./loader');
+const loader: string = require.resolve('./loader');
 
-export default function ({ fixture = 'basic.js', extend = {} } = {}): Promise<Stats> {
-  const config = {
+export const webpackRunner: any = ({ fixture = 'basic.js', extend = {} } = {}): Promise<Stats> => {
+  const config: Configuration = {
     mode: 'development',
     entry: path.join(__dirname, '..', 'fixtures', fixture),
     output: {
@@ -18,10 +18,10 @@ export default function ({ fixture = 'basic.js', extend = {} } = {}): Promise<St
       }],
     },
     ...extend,
-  } as Configuration;
+  };
 
   return new Promise((resolve, reject) => {
-    const compiler = webpack(config);
+    const compiler: Compiler = webpack(config);
 
     compiler.outputFileSystem = new MemoryFileSystem();
     compiler.run((err, stats) => {
@@ -32,4 +32,4 @@ export default function ({ fixture = 'basic.js', extend = {} } = {}): Promise<St
       return resolve(stats);
     });
   });
-}
+};

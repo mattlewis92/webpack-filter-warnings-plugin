@@ -1,3 +1,3 @@
-import WebpackFilterWarnings from './WebpackFilterWarnings';
+import { FilterWarningsPlugin as PluginClass } from './filterWarningsPlugin';
 
-export default WebpackFilterWarnings;
+export const FilterWarningsPlugin: typeof PluginClass = PluginClass;

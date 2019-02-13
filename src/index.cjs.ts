@@ -1,3 +1,3 @@
-import WebpackFilterWarnings from './WebpackFilterWarnings';
+import { FilterWarningsPlugin } from './filterWarningsPlugin';
 
-export = WebpackFilterWarnings;
+export = FilterWarningsPlugin;

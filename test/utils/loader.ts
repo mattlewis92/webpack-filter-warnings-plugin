@@ -5,10 +5,10 @@ import Loader = webpack.loader.Loader;
 // In order to properly cast types, we have to create "builder"
 type LoaderBuilder = () => Loader;
 
-const loaderBuilder: LoaderBuilder = () => function (source: any, sourceMap: any) {
+const loaderBuilder: LoaderBuilder = (): Loader => function(source: string | Buffer, sourceMap?: any): void {
   this.emitWarning(new Error('show me'));
   this.emitWarning(new Error('hide me'));
-  this.callback(null, source, sourceMap);
+  this.callback(undefined, source, sourceMap);
 
   return;
 };
