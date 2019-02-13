@@ -1,6 +1,6 @@
 const CJS = require('../src/index.cjs'); // tslint:disable-line
 
-jest.mock('../src/filterWarningsPlugin', () => ({
+jest.mock('../src/index.es', () => ({
   FilterWarningsPlugin: {},
 }));
 

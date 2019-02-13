@@ -1,3 +1,3 @@
-import { FilterWarningsPlugin } from './filterWarningsPlugin';
+import { FilterWarningsPlugin } from './index.es';
 
 export = FilterWarningsPlugin;
