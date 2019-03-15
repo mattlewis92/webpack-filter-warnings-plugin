@@ -44,7 +44,19 @@ import { FilterWarningsPlugin } from 'webpack-filter-warnings-plugin/es';
 
 ### Using with Typescript
 
-Webpack Filter Warnings Plugin is completely written in Typescript. As such, it exposes Typescript bindings (no `@types/` dependency needed for now).
+Webpack Filter Warnings Plugin is completely written in Typescript. As such, it exposes Typescript bindings. 
+
+Before using it, install webpack typings:
+
+```bash
+npm i --save-dev @types/webpack
+```
+
+or
+
+```bash
+yarn add --dev @types/webpack
+```
 
 As exported module is CommonJS by default, one needs to use special Typescript syntax to import that module:
 
