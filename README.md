@@ -20,7 +20,7 @@ Library supports both CommonJS and ES modules.
 
 ```js
 // webpack.config.js
-const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
+const { FilterWarningsPlugin } = require('webpack-filter-warnings-plugin');
 
 module.exports = {
   // ... rest of webpack config
@@ -58,15 +58,15 @@ or
 yarn add --dev @types/webpack
 ```
 
-As exported module is CommonJS by default, one needs to use special Typescript syntax to import that module:
+Use ES imports:
 
 ```typescript
 // webpack.config.ts
-import FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
+import { FilterWarningsPlugin } from 'webpack-filter-warnings-plugin';
 
 ```
 
-The recommended way would be to use ES module residing in `webpack-filter-warnings-plugin/es`, though, as in former examples.
+The recommended way would be to use ES module residing in `webpack-filter-warnings-plugin/es`, though, as it exports ES6-compatible code.
 
 ## Options
 
