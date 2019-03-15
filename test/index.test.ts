@@ -1,6 +1,6 @@
 import { Compiler, Stats } from 'webpack';
 
-import { FilterWarningsPlugin } from '../src/index.es';
+import { FilterWarningsPlugin } from '../src/index';
 import { webpackRunner } from './utils/webpack';
 
 describe('Main library file', () => {

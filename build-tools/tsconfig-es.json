@@ -5,6 +5,6 @@
     "outDir": "../ts-out/es"
   },
   "include": [
-    "../src/**/*.es.ts"
+    "../src/**/*.ts"
   ]
 }

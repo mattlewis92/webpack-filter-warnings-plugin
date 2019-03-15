@@ -5,6 +5,6 @@
     "outDir": "../ts-out/cjs"
   },
   "include": [
-    "../src/**/*.cjs.ts"
+    "../src/**/*.ts"
   ]
 }

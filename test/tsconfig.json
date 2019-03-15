@@ -2,9 +2,5 @@
   "compilerOptions": {
     "target": "ES2015" // Needed to properly interpret async/awaits in the tests if test environment does not support it
   },
-  "extends": "../tsconfig.json",
-  "include": [
-    "../src/**/*.ts",
-    "../test/**/*.ts"
-  ]
+  "extends": "../tsconfig.json"
 }
