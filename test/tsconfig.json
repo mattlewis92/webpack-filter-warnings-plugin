@@ -1,6 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES2015" // Needed to properly interpret async/awaits in the tests if test environment does not support it
+    "target": "ES2015", // Needed to properly interpret async/awaits in the tests if test environment does not support it
+    "types": [
+      "jest",
+      "node"
+    ]
   },
-  "extends": "../tsconfig.json"
+  "extends": "../tsconfig.json",
+  "include": [
+    "src/**/*.ts",
+    "test/**/*.ts"
+  ]
 }
