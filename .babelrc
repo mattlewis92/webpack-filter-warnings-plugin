@@ -4,37 +4,9 @@
       "@babel/preset-env",
       {
         "targets": {
-          "esmodules": true
+          "node": "8.0"
         }
       }
     ]
-  ],
-  "overrides": [
-    {
-      "test": "ts-out/es",
-      "presets": [
-        [
-          "@babel/preset-env",
-          {
-            "targets": {
-              "esmodules": true
-            }
-          }
-        ]
-      ]
-    },
-    {
-      "test": "ts-out/cjs",
-      "presets": [
-        [
-          "@babel/preset-env",
-          {
-            "targets": {
-              "node": "4.3"
-            }
-          }
-        ]
-      ]
-    }
   ]
 }

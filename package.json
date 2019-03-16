@@ -7,12 +7,10 @@
   "scripts": {
     "prebuild": "npm run clean",
     "build": "npm run build:typescript && npm run build:babel",
-    "build:babel": "babel ts-out --out-dir . --copy-files ",
-    "build:cjs": "tsc -p './build-tools/tsconfig-cjs.json'",
+    "build:babel": "babel ts-out --out-dir dist --copy-files",
     "build:dev": "npm run build -- -- --source-maps inline",
-    "build:es": "tsc -p './build-tools/tsconfig-es.json'",
-    "build:typescript": "npm run build:cjs && npm run build:es",
-    "clean": "del-cli es cjs ts-out",
+    "build:typescript": "tsc",
+    "clean": "del-cli dist ts-out",
     "lint": "tslint 'src/**/*.ts' 'test/**/*.ts' --project tsconfig.json",
     "lint-staged": "lint-staged",
     "lint:fix": "npm run lint -- --fix",
@@ -46,10 +44,9 @@
     "es"
   ],
   "engines": {
-    "node": ">= 4.3 < 5.0.0 || >= 5.10"
+    "node": ">= 8.0"
   },
   "peerDependencies": {
-    "@types/webpack": "^4.4.25",
     "webpack": "^2.0.0 || ^3.0.0 || ^4.0.0"
   },
   "pre-commit": "lint-staged",

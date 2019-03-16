@@ -66,8 +66,6 @@ import { FilterWarningsPlugin } from 'webpack-filter-warnings-plugin';
 
 ```
 
-The recommended way would be to use ES module residing in `webpack-filter-warnings-plugin/es`, though, as it exports ES6-compatible code.
-
 ## Options
 
 Library exposes only one option: `exclude`. It may be one of `RegExp`, `String` or `Function`.

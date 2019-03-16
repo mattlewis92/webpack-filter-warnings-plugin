@@ -6,8 +6,7 @@ npm-debug.log*
 
 # Directories
 /coverage
-/cjs
-/es
+/dist
 /ts-out
 /local
 /reports
