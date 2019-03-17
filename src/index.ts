@@ -77,12 +77,7 @@ export class FilterWarningsPlugin implements Plugin {
   }
 
   public apply(compiler: Compiler): void {
-    if (typeof compiler.hooks !== 'undefined') {
-      compiler.hooks.done.tap('filter-warnings-plugin', (result: Stats) =>
-        FilterWarningsPlugin.filterWarnings(this.exclude, result));
-    } else {
-      compiler.plugin('done', (result: Stats) =>
-        FilterWarningsPlugin.filterWarnings(this.exclude, result));
-    }
+    compiler.hooks.done.tap('filter-warnings-plugin', (result: Stats) =>
+      FilterWarningsPlugin.filterWarnings(this.exclude, result));
   }
 }
