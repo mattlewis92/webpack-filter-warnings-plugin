@@ -1,4 +1,4 @@
-import { Compiler, Stats } from 'webpack';
+import { Stats } from 'webpack';
 
 import { FilterWarningsPlugin } from '../src/index';
 import { webpackRunner } from './utils/webpack';
@@ -85,34 +85,6 @@ describe('Main library file', () => {
 
       expect(stats.compilation.warnings).toHaveLength(1);
       expect(stats.compilation.warnings).toMatchSnapshot();
-    });
-  });
-
-  it('should support older Webpack (via "plugin" interface', () => {
-    const pluginInstance: FilterWarningsPlugin = new FilterWarningsPlugin({ exclude: 'hide' });
-
-    const oldCompilerMock: Compiler = {
-      plugin: jest.fn(() => ({})),
-    } as any as Compiler;
-
-    pluginInstance.apply(oldCompilerMock);
-
-    expect(oldCompilerMock.plugin).toHaveBeenCalledWith('done', expect.any(Function));
-
-    const callback: any = (oldCompilerMock.plugin as jest.Mock).mock.calls[0][1];
-    const result: [{ message: string }] = callback({
-      compilation: {
-        warnings: [{
-          message: 'Test',
-        }, { // Second message should be filtered!
-          message: 'Hide me',
-        }],
-      },
-    });
-
-    expect(result.length).toEqual(1);
-    expect(result[0]).toEqual({
-      message: 'Test',
     });
   });
 });

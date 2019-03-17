@@ -11,7 +11,7 @@
     "build:dev": "npm run build -- -- --source-maps inline",
     "build:typescript": "tsc",
     "clean": "del-cli dist ts-out",
-    "lint": "tslint 'src/**/*.ts' 'test/**/*.ts' --project tsconfig.json",
+    "lint": "tslint --project test/tsconfig.json",
     "lint-staged": "lint-staged",
     "lint:fix": "npm run lint -- --fix",
     "prepublish": "npm run build",
