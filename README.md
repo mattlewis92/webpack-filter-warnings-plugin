@@ -14,10 +14,6 @@ npm i -D webpack-filter-warnings-plugin
 
 ## Usage
 
-Library supports both CommonJS and ES modules.
-
-### Using CommonJS
-
 ```js
 // webpack.config.js
 const { FilterWarningsPlugin } = require('webpack-filter-warnings-plugin');
@@ -30,16 +26,6 @@ module.exports = {
     })
   ]
 }
-```
-
-### Using ES modules
-
-Library exposes special ES modules - compatible export. Use it if you are working in environment supporting those.
-Notice additional '/es' suffix in import string.
-
-```js
-// webpack.config.js
-import { FilterWarningsPlugin } from 'webpack-filter-warnings-plugin/es';
 ```
 
 ### Using with Typescript
