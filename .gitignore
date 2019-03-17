@@ -1,14 +1,22 @@
+# Tool-generated files
 logs
 *.log
 npm-debug.log*
 .eslintcache
+
+# Directories
 /coverage
 /dist
+/ts-out
 /local
 /reports
 /node_modules
+
+# System meta files
 .DS_Store
 Thumbs.db
+
+# Editors
 .idea
 .vscode
 *.sublime-project

@@ -13,9 +13,10 @@ npm i -D webpack-filter-warnings-plugin
 ```
 
 ## Usage
+
 ```js
 // webpack.config.js
-const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
+const { FilterWarningsPlugin } = require('webpack-filter-warnings-plugin');
 
 module.exports = {
   // ... rest of webpack config
@@ -27,8 +28,69 @@ module.exports = {
 }
 ```
 
-### Why not use the built in stats.warningsFilter option?
-Currently karma-webpack does not respect the stats.warningsFilter option. Also when excluding all warnings, webpack still says `Compiled with warnings.` when all warnings are filtere. Hopefully this plugin will no longer need to exist one day.
+### Using with Typescript
+
+Webpack Filter Warnings Plugin is completely written in Typescript. As such, it exposes Typescript bindings. 
+
+Before using it, install webpack typings:
+
+```bash
+npm i --save-dev @types/webpack
+```
+
+or
+
+```bash
+yarn add --dev @types/webpack
+```
+
+Use ES imports:
+
+```typescript
+// webpack.config.ts
+import { FilterWarningsPlugin } from 'webpack-filter-warnings-plugin';
+
+```
+
+## Options
+
+Library exposes only one option: `exclude`. It may be one of `RegExp`, `String` or `Function`.
+
+### String as `exclude` filter
+
+When passing string as exclude parameter, phrase is converted to wildcard and matches any phrase that contains it.
+
+```js
+// webpack.config.js
+module.exports = {
+  // ... rest of webpack config
+  plugins: [
+    new FilterWarningsPlugin({ 
+      exclude: 'hide me'
+    })
+  ]
+}
+
+```
+
+This config will match any of `Should hide me`, `Hide me, please`, `HiDe Me` (filter is case insensitive) etc.
+
+### Function as `exclude` filter
+
+```js
+// webpack.config.js
+module.exports = {
+  // ... rest of webpack config
+  plugins: [
+    new FilterWarningsPlugin({ 
+      exclude: (input) => /.*hide.*/.test(input),
+    })
+  ]
+}
+```
+
+## Why not use the built in stats.warningsFilter option?
+Currently karma-webpack does not respect the stats.warningsFilter option. Also when excluding all warnings, webpack still says `Compiled with warnings.` when all warnings are filtered. Hopefully this plugin will no longer need to exist one day.
 
 ## Licence
 MIT
