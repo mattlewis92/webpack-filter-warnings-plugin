@@ -2,8 +2,8 @@
   "name": "webpack-filter-warnings-plugin",
   "version": "1.2.1",
   "description": "Allows you to hide certain warnings from webpack compilations",
-  "main": "cjs/index.js",
-  "types": "cjs/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "prebuild": "npm run clean",
     "build": "npm run build:typescript && npm run build:babel",
@@ -40,8 +40,7 @@
   },
   "homepage": "https://github.com/mattlewis92/webpack-filter-warnings-plugin#readme",
   "files": [
-    "cjs",
-    "es"
+    "dist"
   ],
   "engines": {
     "node": ">= 8.0"
