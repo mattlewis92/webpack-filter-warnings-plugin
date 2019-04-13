@@ -16,7 +16,7 @@ npm i -D webpack-filter-warnings-plugin
 
 ```js
 // webpack.config.js
-const { FilterWarningsPlugin } = require('webpack-filter-warnings-plugin');
+const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
 
 module.exports = {
   // ... rest of webpack config
@@ -48,7 +48,7 @@ Use ES imports:
 
 ```typescript
 // webpack.config.ts
-import { FilterWarningsPlugin } from 'webpack-filter-warnings-plugin';
+import FilterWarningsPlugin from 'webpack-filter-warnings-plugin';
 
 ```
 
