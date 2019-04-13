@@ -66,7 +66,7 @@ export class FilterWarningsPlugin implements Plugin {
 
   public constructor({ exclude }: WebpackFilterWarningsPluginOptions) {
     if (!FilterWarningsPlugin.isSupportedOption(exclude)) {
-      throw new Error('Exclude can only be string, RegExp or Array of these');
+      throw new Error('Exclude can only be string, function, RegExp, or an Array of these.');
     }
 
     if (!Array.isArray(exclude)) {
