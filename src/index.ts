@@ -1,4 +1,4 @@
-import { Compiler, Plugin, Stats } from 'webpack';
+import { compilation as webpackCompilation, Compiler, Plugin, Stats } from 'webpack';
 
 import { AllowedFilter, ExcludeOption, WebpackFilterWarningsPluginOptions, WebpackLogWarning } from './interfaces';
 
@@ -34,11 +34,20 @@ export class FilterWarningsPlugin implements Plugin {
    * Filters warnings array.
    * Mutates the data!
    */
-  private static filterWarnings(exclude: AllowedFilter[], result: Stats): WebpackLogWarning[] {
-    result.compilation.warnings = result.compilation.warnings.filter(
-      (warning: WebpackLogWarning) => FilterWarningsPlugin.filterWarning(exclude, warning));
+  private static filterWarnings(
+    exclude: AllowedFilter[],
+    compilation: webpackCompilation.Compilation,
+  ): WebpackLogWarning[] {
+    compilation.warnings = compilation.warnings.filter((warning: WebpackLogWarning) =>
+      FilterWarningsPlugin.filterWarning(exclude, warning),
+    );
 
-    return result.compilation.warnings;
+    if (compilation.children) {
+      compilation.children.forEach((c: webpackCompilation.Compilation) =>
+        FilterWarningsPlugin.filterWarnings(exclude, c),
+      );
+    }
+    return compilation.warnings;
   }
 
   /**
@@ -78,6 +87,6 @@ export class FilterWarningsPlugin implements Plugin {
 
   public apply(compiler: Compiler): void {
     compiler.hooks.done.tap('filter-warnings-plugin', (result: Stats) =>
-      FilterWarningsPlugin.filterWarnings(this.exclude, result));
+      FilterWarningsPlugin.filterWarnings(this.exclude, result.compilation));
   }
 }
