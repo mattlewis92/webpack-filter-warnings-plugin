@@ -46,7 +46,7 @@
     "node": ">= 8.0"
   },
   "peerDependencies": {
-    "webpack": ">= 4.0.0"
+    "webpack": "^4.0.0 || ^5.0.0"
   },
   "pre-commit": "lint-staged",
   "lint-staged": {
@@ -74,6 +74,6 @@
     "tslint": "^5.14.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.3.3333",
-    "webpack": "^4.29.6"
+    "webpack": "^5.0.0"
   }
 }
